@@ -3,7 +3,7 @@ import SubscriptionCard from "@/Components/SubscriptionCard";
 
 export default function SubscriptionPlan() {
     return (
-        <Authenticated>
+       <Authenticated>
             <div className="py-20 flex flex-col items-center">
                 <div className="text-black font-semibold text-[26px] mb-3">
                     Pricing for Everyone
@@ -32,7 +32,7 @@ export default function SubscriptionPlan() {
                     />
                 </div>
                 {/* /Pricing Card */}
-            </div>
+            </div>           
         </Authenticated>
     );
 }

@@ -1,7 +1,7 @@
-import { Link } from "@inertiajs/react";
+//import { Link } from "@inertiajs/react";
 import PropType from "prop-types";
 
-MovieCard.propType = {
+MovieCard.propType = {  
     slug: PropType.string.isRequired,
     name: PropType.string.isRequired,
     category: PropType.string.isRequired,
