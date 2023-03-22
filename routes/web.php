@@ -35,11 +35,11 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::redirect('/','/prototype/login');
+Route::redirect('/','/login');
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return Inertia::render('User/Dashboard/Index');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('prototype')->name('prototype.')->group(function(){ 
     Route::get('/login', function() {
