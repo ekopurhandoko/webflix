@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\DashboardController;
 use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use League\Flysystem\UrlGeneration\PrefixPublicUrlGenerator;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +40,13 @@ use Inertia\Inertia;
 
 Route::redirect('/','/login');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('User/Dashboard/Index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'role:user'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
+});
+
+// Route::get('/dashboard', function () {
+//     return inertia('User/Dashboard/Index');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('prototype')->name('prototype.')->group(function(){ 
     Route::get('/login', function() {
