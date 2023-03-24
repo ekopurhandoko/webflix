@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\MovieController;
 use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Routing\RouteGroup;
+use Illuminate\Routing\RouteUrlGenerator;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use League\Flysystem\UrlGeneration\PrefixPublicUrlGenerator;
@@ -42,6 +44,9 @@ Route::redirect('/','/login');
 
 Route::middleware(['auth', 'role:user'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+    route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
+    
 });
 
 // Route::get('/dashboard', function () {
